@@ -7,10 +7,9 @@ namespace Travancore.ROBY
     public class GamePlayManager : MonoBehaviour
     {
         public static GamePlayManager instance;
-
-
-        public Cell currentSelectedCell;
-        public bool isDrawing = false;
+        [HideInInspector] public Cell currentSelectedCell;
+        [HideInInspector] public bool isDrawing = false;
+        [HideInInspector] public List<Cell> allCells = new List<Cell>();
 
         void Start()
         {

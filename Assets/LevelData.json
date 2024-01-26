@@ -1,0 +1,34 @@
+{
+    "Levels": [
+        {
+            "LevelNumber": 1,
+            "Nodes": [
+                {
+                    "Nodecolor": 1,
+                    "Node1Cell": 1,
+                    "Node2Cell": 22
+                },
+              {
+                "Nodecolor": 2,
+                "Node1Cell": 13,
+                "Node2Cell": 4
+              },
+              {
+                "Nodecolor": 3,
+                "Node1Cell": 6,
+                "Node2Cell": 18
+              }
+            ]
+        },
+        {
+            "LevelNumber": 2,
+            "Nodes": [
+                {
+                    "Nodecolor": 0,
+                    "Node1Cell": 5,
+                    "Node2Cell": 6
+                }
+            ]
+        }
+    ]
+}

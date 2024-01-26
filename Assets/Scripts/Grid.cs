@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Travancore.ROBY
@@ -46,11 +48,57 @@ namespace Travancore.ROBY
 
                     Vector3 cellPosition = new Vector3(xPos * (cellSize + cellgap), yPos * (cellSize + cellgap), 0);
                     GameObject cell = Instantiate(cellPrefab, cellPosition, Quaternion.identity);
+                    GamePlayManager.instance.allCells.Add(cell.GetComponent<Cell>());
                     cell.name = "Cell " + cellNum;
                     cell.transform.parent = transform; // Set the grid as the parent of each cell
                     cellNum++;
                 }
             }
+
+            enableNode();
+
+
+        }
+
+        void enableNode()
+        {
+            string filepath = Path.Combine(Application.dataPath, "LevelData.json");
+            if (File.Exists(filepath))
+            {
+                string json = File.ReadAllText(filepath);
+                TotalLevels levels = JsonUtility.FromJson<TotalLevels>(json);
+                foreach ( NodeData node in levels.Levels[0].Nodes)
+                {
+                    switch (node.Nodecolor)
+                    {
+                        case NodeColors.Orange:
+                            GamePlayManager.instance.allCells[node.Node1Cell].ActivateNode(Color.cyan);
+                            GamePlayManager.instance.allCells[node.Node2Cell].ActivateNode(Color.cyan);
+                            break;
+                        case NodeColors.Red:
+                            GamePlayManager.instance.allCells[node.Node1Cell].ActivateNode(Color.red);
+                            GamePlayManager.instance.allCells[node.Node2Cell].ActivateNode(Color.red);
+                            break;
+                        case NodeColors.Green:
+                            GamePlayManager.instance.allCells[node.Node1Cell].ActivateNode(Color.green);
+                            GamePlayManager.instance.allCells[node.Node2Cell].ActivateNode(Color.green);
+                            break;
+                        case NodeColors.Blue:
+                            GamePlayManager.instance.allCells[node.Node1Cell].ActivateNode(Color.blue);
+                            GamePlayManager.instance.allCells[node.Node2Cell].ActivateNode(Color.blue);
+                            break;
+                        case NodeColors.Purple:
+                            GamePlayManager.instance.allCells[node.Node1Cell].ActivateNode(Color.yellow);
+                            GamePlayManager.instance.allCells[node.Node2Cell].ActivateNode(Color.yellow);
+                            break;
+
+                    }
+
+                }
+
+        
+            }
+
         }
     }
 }
