@@ -37,6 +37,26 @@
                     "Nodecolor": 0,
                     "Node1Cell": 5,
                     "Node2Cell": 6
+                },
+                {
+                    "Nodecolor": 1,
+                    "Node1Cell": 7,
+                    "Node2Cell": 14
+                },
+                {
+                    "Nodecolor": 2,
+                    "Node1Cell": 10,
+                    "Node2Cell": 18
+                },
+                {
+                    "Nodecolor": 3,
+                    "Node1Cell": 15,
+                    "Node2Cell": 23
+                },
+                {
+                    "Nodecolor": 4,
+                    "Node1Cell": 20,
+                    "Node2Cell": 25
                 }
             ]
         }

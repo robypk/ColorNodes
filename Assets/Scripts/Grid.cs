@@ -59,7 +59,7 @@ namespace Travancore.ROBY
             {
                 string json = File.ReadAllText(filepath);
                 TotalLevels levels = JsonUtility.FromJson<TotalLevels>(json);
-                foreach ( NodeData node in levels.Levels[0].Nodes)
+                foreach ( NodeData node in levels.Levels[1].Nodes)
                 {
                     switch (node.Nodecolor)
                     {
