@@ -4,20 +4,30 @@
             "LevelNumber": 1,
             "Nodes": [
                 {
-                    "Nodecolor": 1,
-                    "Node1Cell": 1,
+                    "Nodecolor": 0,
+                    "Node1Cell": 3,
+                    "Node2Cell": 20
+                },
+                {
+                    "Nodecolor": 3,
+                    "Node1Cell": 2,
                     "Node2Cell": 22
                 },
-              {
-                "Nodecolor": 2,
-                "Node1Cell": 13,
-                "Node2Cell": 4
-              },
-              {
-                "Nodecolor": 3,
-                "Node1Cell": 6,
-                "Node2Cell": 18
-              }
+                {
+                    "Nodecolor": 2,
+                    "Node1Cell": 7,
+                    "Node2Cell": 14
+                },
+                {
+                    "Nodecolor": 1,
+                    "Node1Cell": 19,
+                    "Node2Cell": 25
+                },
+                {
+                    "Nodecolor": 4,
+                    "Node1Cell": 17,
+                    "Node2Cell": 21
+                }
             ]
         },
         {

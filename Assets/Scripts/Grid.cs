@@ -26,16 +26,8 @@ namespace Travancore.ROBY
 
         void GenerateGrid()
         {
-            if (gridSprite == null)
-            {
-                Debug.LogError("Grid sprite is not assigned!");
-                return;
-            }
-
             float spriteWidth = gridSprite.bounds.size.x;
             float spriteHeight = gridSprite.bounds.size.y;
-
-
             float cellWidth = cellsprite.bounds.size.x;
             float cellHeight = cellsprite.bounds.size.y;
 
@@ -50,7 +42,7 @@ namespace Travancore.ROBY
                     GameObject cell = Instantiate(cellPrefab, cellPosition, Quaternion.identity);
                     GamePlayManager.instance.allCells.Add(cell.GetComponent<Cell>());
                     cell.name = "Cell " + cellNum;
-                    cell.transform.parent = transform; // Set the grid as the parent of each cell
+                    cell.transform.parent = transform;
                     cellNum++;
                 }
             }
@@ -72,31 +64,31 @@ namespace Travancore.ROBY
                     switch (node.Nodecolor)
                     {
                         case NodeColors.Orange:
-                            GamePlayManager.instance.allCells[node.Node1Cell].ActivateNode(Color.cyan);
-                            GamePlayManager.instance.allCells[node.Node2Cell].ActivateNode(Color.cyan);
+                            GamePlayManager.instance.allCells[node.Node1Cell-1].ActivateNode(Color.cyan);
+                            GamePlayManager.instance.allCells[node.Node2Cell-1].ActivateNode(Color.cyan);
                             break;
                         case NodeColors.Red:
-                            GamePlayManager.instance.allCells[node.Node1Cell].ActivateNode(Color.red);
-                            GamePlayManager.instance.allCells[node.Node2Cell].ActivateNode(Color.red);
+                            GamePlayManager.instance.allCells[node.Node1Cell - 1].ActivateNode(Color.red);
+                            GamePlayManager.instance.allCells[node.Node2Cell -1].ActivateNode(Color.red);
                             break;
                         case NodeColors.Green:
-                            GamePlayManager.instance.allCells[node.Node1Cell].ActivateNode(Color.green);
-                            GamePlayManager.instance.allCells[node.Node2Cell].ActivateNode(Color.green);
+                            GamePlayManager.instance.allCells[node.Node1Cell - 1].ActivateNode(Color.green);
+                            GamePlayManager.instance.allCells[node.Node2Cell - 1].ActivateNode(Color.green);
                             break;
                         case NodeColors.Blue:
-                            GamePlayManager.instance.allCells[node.Node1Cell].ActivateNode(Color.blue);
-                            GamePlayManager.instance.allCells[node.Node2Cell].ActivateNode(Color.blue);
+                            GamePlayManager.instance.allCells[node.Node1Cell - 1].ActivateNode(Color.blue);
+                            GamePlayManager.instance.allCells[node.Node2Cell - 1].ActivateNode(Color.blue);
                             break;
                         case NodeColors.Purple:
-                            GamePlayManager.instance.allCells[node.Node1Cell].ActivateNode(Color.yellow);
-                            GamePlayManager.instance.allCells[node.Node2Cell].ActivateNode(Color.yellow);
+                            GamePlayManager.instance.allCells[node.Node1Cell - 1].ActivateNode(Color.yellow);
+                            GamePlayManager.instance.allCells[node.Node2Cell - 1].ActivateNode(Color.yellow);
                             break;
 
                     }
+                    GamePlayManager.instance.occupiedCells.Add(GamePlayManager.instance.allCells[node.Node1Cell-1]);
+                    GamePlayManager.instance.occupiedCells.Add(GamePlayManager.instance.allCells[node.Node2Cell - 1]);
 
                 }
-
-        
             }
 
         }

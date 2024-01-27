@@ -10,6 +10,7 @@ namespace Travancore.ROBY
         [HideInInspector] public Cell currentSelectedCell;
         [HideInInspector] public bool isDrawing = false;
         [HideInInspector] public List<Cell> allCells = new List<Cell>();
+        [HideInInspector] public List<Cell> occupiedCells = new List<Cell>();
 
         void Start()
         {
