@@ -9,19 +9,12 @@ namespace Travancore.ROBY
     public class LevelDesigner : MonoBehaviour
     {
         public TotalLevels totalLevels;
-        // Start is called before the first frame update
-        void Start()
+
+       public void onSaveButtonClick()
         {
-            string levelData = JsonUtility.ToJson(totalLevels,true);
+            string levelData = JsonUtility.ToJson(totalLevels, true);
             string filepath = Path.Combine(Application.dataPath, "LevelData.json");
             File.WriteAllText(filepath, levelData);
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
         }
     }
 }

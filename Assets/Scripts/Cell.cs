@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Travancore.ROBY
@@ -15,7 +16,7 @@ namespace Travancore.ROBY
 
         List<Cell> linePathCells = new List<Cell>();
         bool isNodeActivated = false;
-        Cell CurrentHoverCell = null;
+        Cell currentHoverCell = null;
         int lineCount = 1;
 
 
@@ -42,11 +43,11 @@ namespace Travancore.ROBY
                 return;
             }
             GetComponent<SpriteRenderer>().color = GamePlayManager.instance.currentSelectedCell.NodeColor;
-            if(GamePlayManager.instance.currentSelectedCell != this) // prevent self draw
+            if(GamePlayManager.instance.currentSelectedCell != this)
             {
                 GamePlayManager.instance.currentSelectedCell.CreateLine(this);
             }
-            if (NodeColor == GamePlayManager.instance.currentSelectedCell.NodeColor) // reached the Next same node
+            if (NodeColor == GamePlayManager.instance.currentSelectedCell.NodeColor)
             {
                 GamePlayManager.instance.isDrawing = false;
             }
@@ -75,16 +76,17 @@ namespace Travancore.ROBY
             }
             GamePlayManager.instance.isDrawing = false;
 
-            if(CurrentHoverCell != null)
+            if(currentHoverCell != null)
             {
-                if (NodeColor != CurrentHoverCell.NodeColor)
+                if (NodeColor != currentHoverCell.NodeColor)
                 {
                     removeLine();
                 }
                 else
                 {
-                   CurrentHoverCell.NextSameNode = this;
-                   GamePlayManager.instance.occupiedCells.AddRange(linePathCells);
+                   currentHoverCell.NextSameNode = this;
+                   GamePlayManager.instance.occupiedCells.AddRange(linePathCells); 
+                   GamePlayManager.instance.Result();
                 }
             }
         }
@@ -104,7 +106,7 @@ namespace Travancore.ROBY
             {
                 drawLine(cell);
             }
-            else if (!linePathCells.Contains(cell) && diagonalCheck(CurrentHoverCell, cell))
+            else if (!linePathCells.Contains(cell) && diagonalCheck(currentHoverCell, cell))
             {
                 drawLine(cell);
             }
@@ -125,9 +127,9 @@ namespace Travancore.ROBY
             }
             linePathCells.Add(cell);
             lineCount++;
-            CurrentHoverCell = linePathCells.Last<Cell>();
+            currentHoverCell = linePathCells.Last<Cell>();
             lineRenderer.positionCount = lineCount;
-            lineRenderer.SetPosition(lineCount - 1, CurrentHoverCell.gameObject.transform.position);
+            lineRenderer.SetPosition(lineCount - 1, currentHoverCell.gameObject.transform.position);
         }
 
         protected void removeLine()
@@ -139,7 +141,7 @@ namespace Travancore.ROBY
             }
             linePathCells.Clear();
             lineRenderer.positionCount = lineCount;
-            CurrentHoverCell = null;
+            currentHoverCell = null;
         }
 
 
